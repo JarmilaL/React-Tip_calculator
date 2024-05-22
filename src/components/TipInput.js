@@ -1,7 +1,7 @@
-export default function TipInput() {
+export default function TipInput({ children }) {
   return (
     <div>
-      <span>How did you like the service?</span>
+      <span>{children}</span>
       <select>
         <option>Disaster (0%)</option>
         <option>They tried... (5%)</option>
