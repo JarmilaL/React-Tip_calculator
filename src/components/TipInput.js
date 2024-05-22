@@ -1,13 +1,33 @@
-export default function TipInput({ children }) {
+export default function TipInput({ children, handleTip }) {
   return (
     <div>
       <span>{children}</span>
-      <select>
-        <option>Disaster (0%)</option>
-        <option>They tried... (5%)</option>
-        <option>It was good (10%)</option>
-        <option>Absolutely amazing! (20%)</option>
+      <select onChange={(e) => handleTip(e.target.value)}>
+        {options.map((option, i) => (
+          <option value={option.tip} key={i}>
+            {option.text} ({option.tip}%)
+          </option>
+        ))}
       </select>
     </div>
   );
 }
+
+const options = [
+  {
+    text: 'Disaster',
+    tip: 0,
+  },
+  {
+    text: 'They tried...',
+    tip: 5,
+  },
+  {
+    text: 'It was good',
+    tip: 10,
+  },
+  {
+    text: 'Absolutely amazing!',
+    tip: 20,
+  },
+];

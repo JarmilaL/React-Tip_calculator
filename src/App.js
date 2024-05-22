@@ -6,17 +6,26 @@ import { useState } from 'react';
 
 export default function App() {
   const [price, setPrice] = useState(0);
+  const [tip, setTip] = useState(0);
 
   function handlePrice(input) {
     setPrice(input);
   }
 
+  function handleTip(input) {
+    console.log(input);
+
+    setTip((tip) => tip + Number(input));
+  }
+
   return (
     <div className="App">
       <BillInput handlePrice={handlePrice} />
-      <TipInput>How did you like the service?</TipInput>
-      <TipInput>How did your friend like the service?</TipInput>
-      <Total price={price} />
+      <TipInput handleTip={handleTip}>How did you like the service?</TipInput>
+      <TipInput handleTip={handleTip}>
+        How did your friend like the service?
+      </TipInput>
+      <Total price={price} tip={tip} />
       <Reset />
     </div>
   );

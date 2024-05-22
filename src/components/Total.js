@@ -1,7 +1,9 @@
-export default function Total({ price }) {
+export default function Total({ price, tip }) {
   return (
     <div>
-      <h3>You pay {price}</h3>
+      <h3>
+        You pay {price} + {tip}
+      </h3>
     </div>
   );
 }
