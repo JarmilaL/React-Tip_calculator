@@ -6,27 +6,28 @@ import { useState } from 'react';
 
 export default function App() {
   const [price, setPrice] = useState(0);
-  const [tip, setTip] = useState(0);
+  const [tipOne, setTipOne] = useState(0);
+  const [tipTwo, setTipTwo] = useState(0);
 
-  function handlePrice(input) {
-    setPrice(input);
-  }
+  const totalTip = price * ((tipOne + tipTwo) / 2 / 100);
 
-  function handleTip(input) {
-    console.log(input);
-
-    setTip((tip) => tip + Number(input));
+  function handleReset() {
+    setPrice(0);
+    setTipOne(0);
+    setTipTwo(0);
   }
 
   return (
     <div className="App">
-      <BillInput handlePrice={handlePrice} />
-      <TipInput handleTip={handleTip}>How did you like the service?</TipInput>
-      <TipInput handleTip={handleTip}>
+      <BillInput price={price} handlePrice={setPrice} />
+      <TipInput tip={tipOne} handleTip={setTipOne}>
+        How did you like the service?
+      </TipInput>
+      <TipInput tip={tipTwo} handleTip={setTipTwo}>
         How did your friend like the service?
       </TipInput>
-      <Total price={price} tip={tip} />
-      <Reset />
+      <Total price={price} tip={totalTip} />
+      <Reset handleReset={handleReset} />
     </div>
   );
 }

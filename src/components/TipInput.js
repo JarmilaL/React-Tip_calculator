@@ -1,8 +1,8 @@
-export default function TipInput({ children, handleTip }) {
+export default function TipInput({ children, tip, handleTip }) {
   return (
     <div>
       <span>{children}</span>
-      <select onChange={(e) => handleTip(e.target.value)}>
+      <select value={tip} onChange={(e) => handleTip(Number(e.target.value))}>
         {options.map((option, i) => (
           <option value={option.tip} key={i}>
             {option.text} ({option.tip}%)
